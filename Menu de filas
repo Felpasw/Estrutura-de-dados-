@@ -1,0 +1,211 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+// -------------------- Variáveis globais
+int *ptr, size;
+int primeiro, ultimo, tamanho;
+char nome[21];
+//---------------------
+
+
+//--------------------- Prototipagens 
+void AddElemento();
+void RemovElemento();
+void MostraPrimeiroElemento();
+void MostraUltimoElemento();
+void BuscarElemnto();
+void ListarElemento();
+void MenuFoda();
+//----------------------
+
+
+//-------------------- Main
+int main() {
+	
+
+	
+	primeiro = -1;
+	ultimo = -1;
+	tamanho = -1;
+
+	printf("Digite o tamanho da sua fila ");
+	scanf("%d", &size);
+	ptr = (int *) malloc(size * sizeof(int));
+	printf("Dê um nome para a sua fila: ");
+	scanf(" %20[^\n]", &nome);
+	MenuFoda();
+	
+	return 0;
+	}
+	
+//----------------------
+
+
+//----------------------------------------------------- Menu foda
+void MenuFoda(){
+	int op;	 
+	do {
+
+	printf("\n Digite o que deseja fazer com a fila  %s:", nome); 
+	printf("\n 1.Adicionar elemento na fila."); 
+	printf("\n 2.Remover elemento da fila."); 
+	printf("\n 3.Mostrar o primeiro elemento da fila."); 
+	printf("\n 4.Mostrar o último elemento da fila."); 
+	printf("\n 5.Buscar elemento na fila.");
+	printf("\n 6.Listar os elementos da fila");
+	printf("\n 7.Sair \n");
+	scanf("%d", &op);
+	} while(op<0 || op>7);
+
+
+	switch(op){
+	case 1: 
+	AddElemento();
+	break;
+
+	case 2:
+	RemovElemento();
+	break;
+
+	case 3:
+	MostraPrimeiroElemento();
+	break;
+
+	case 4:
+	MostraUltimoElemento();
+	break;
+
+	case 5:
+	BuscarElemnto();
+	break;
+
+	case 6:
+	ListarElemento();
+	break;
+
+	case 7:
+	printf("\n Ok, saindo :) \n");
+	}
+	}
+//------------------------------------------------------
+	
+
+
+
+//------------------------------------------------------ Adiciona elementos 
+void AddElemento(){
+	int j;
+		if(ultimo == size){
+			ultimo = -1;
+		}
+		if(tamanho == size-1){
+			printf("\n Opa, a fila ta cheia. \n Retornando ao menu...\n");
+ 			MenuFoda();
+		}
+		else{
+			tamanho++;
+			ultimo++;
+			printf("\n Ok, coloque o elemento que deseja: \n ");
+			scanf("%d", &ptr[ultimo]);
+			MenuFoda();		
+	}	
+}
+//------------------------------------------------------
+
+
+
+//------------------------------------------------------ Remove elementos 
+void RemovElemento(){
+char j;
+int cu, i;
+	if(primeiro == size){
+			primeiro = -1;
+		}
+	if(tamanho == -1){
+	printf("\n Opa, a fila ta vazia. \n Retornando ao menu...\n");
+	MenuFoda();
+}
+	else{
+			tamanho--;
+			printf("\n Ok, elemento %d removido.\n ", ptr[primeiro]);
+			primeiro++;
+			MenuFoda();
+	}	
+}
+//------------------------------------------------------
+
+
+//--------------------------------------------------- Mostrar primeiro elemento
+
+ void MostraPrimeiroElemento (){
+	 if(tamanho == -1){
+		printf("\n Nenhum elemento digitado até o momento!\n");
+		MenuFoda();	
+	}
+	 else{
+		printf("\n Primeiro elemento digitado: %d \n", ptr[primeiro]);
+		MenuFoda();
+	}
+
+}
+
+//------------------------------------------------------
+
+
+
+//------------------------------------------------------ Buscar elementos 
+void BuscarElemnto(){
+	int i, cubusc;
+	char ja;
+	printf("\n Digite o número para procura: \n");
+	scanf("%d", &cubusc);
+
+	 for(i = 0; i<=tamanho; i++) {
+		if(cubusc == ptr[i]){
+			printf("\n Achamos o canalha! \n Posição: %d \n Elemento: %d \n ", i, ptr[i]);
+			MenuFoda();
+		}
+		else{
+			printf("\n Não achamos o elemento :( \n");
+			MenuFoda();
+		}
+	}
+
+}
+//------------------------------------------------------
+
+
+
+//------------------------------------------------------ Mostrar Último elemento
+void MostraUltimoElemento () {
+	if(tamanho == -1){
+		printf("\n Nenhum elemento digitado até o momento! \n");
+		MenuFoda();
+	}
+	else{
+		printf("\n Último elemento inserido: %d \n", ptr[ultimo]);
+		MenuFoda();
+	}
+}
+
+//------------------------------------------------------
+
+
+//------------------------------------------------------ Lista Elementos
+void ListarElemento(){
+	int i;
+	if(tamanho == -1){
+		printf("\n Nenhum elemento digitado até o momento! \n");
+		MenuFoda();
+	}
+
+	else{
+		for( i = 0; i<=tamanho; i++) {
+			printf("[%d] = %d \n", i, ptr[i]);
+		}
+	}
+	MenuFoda();
+}
+
+
+//------------------------------------------------------ Fodase sexo

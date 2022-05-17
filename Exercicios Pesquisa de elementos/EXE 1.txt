@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+int exe1() {
+	
+	int i, x, catadorindice, vet[10] = {1, 6, 7, 9, 10, 12, 77, 88, 15, 13};
+	bool encontrado;
+	
+	encontrado = false;
+		printf("Escreva o número desejado: ");
+		scanf("%d", &x);
+		
+			for(i=0; i<10; i++){
+			if(x == vet[i]){
+				encontrado = true;
+				catadorindice = i;
+				i = 10;		
+			}
+		}
+		if(encontrado == true){
+			printf("Valor encontrado! indice: %d !", catadorindice + 1);
+		}	
+		else{
+			printf("Valor não econtrado!");
+		}
+	
+	
+	return 0;
+}

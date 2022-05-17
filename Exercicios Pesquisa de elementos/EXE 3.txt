@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+int main() {
+
+   int i, j, elem, vet[15] = {4, 7, 8, 10, 67, 33, 12, 5, 0, 1, 43, 90, 88, 72, 678};
+   int esquerda, direita, meio, x;
+   bool encontrado;
+   
+   esquerda = 0;
+   direita = 14;
+   
+   encontrado = false;
+   
+      for(j = 1 ;j<15;j++){
+        	elem = vet[j];
+         	i = j - 1;
+         	
+         	while(i>= 0 && vet[i] > elem){
+            		vet[i + 1] = vet[i];
+            		i--;
+            		vet[i+1] = elem;
+         }
+      }
+       
+       printf("Digite o valor a ser encontrado: ");
+       scanf("%d", &x);
+       
+       meio = (esquerda + direita)/2;
+       
+       		while(encontrado != true && esquerda <= direita){
+       				if(vet[meio] == x){
+       						encontrado = true;
+			   		}
+			   		else if(x > vet[meio]){
+			   			esquerda = meio + 1;
+			   			meio = (esquerda + direita)/2;
+			   			
+					   }
+					else{
+						direita = meio - 1;
+						meio = (esquerda + direita)/2;
+							
+					}
+					
+		   }
+		   
+		   if(encontrado == true){
+		   		printf("Numero encontrado!, indice: %d", meio);
+		   }
+		   else{
+		   		printf("Numero nao encontrado! ");
+		   }
+      
+   return 0;
+}

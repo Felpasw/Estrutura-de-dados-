@@ -1,0 +1,109 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+	//void cadastrar();
+	//void buscar();
+	typedef struct{
+		int id;
+		char nome[50];
+		char telefone[50];
+		char email[50];
+			
+	}contato;
+	contato contact[10];
+	int k;
+	k = 0;
+	
+int main(){
+	int op;
+	printf("***************Menu*****************\n");
+	printf("(1) Cadastrar\n(2) Buscar\n");
+		scanf("%d", &op);
+		switch(op){
+			case 1 :
+				cadastrar();
+				break;
+			case 2: 
+				buscar();
+				break;
+			default :
+				printf("Inválido!");
+		}
+		
+	
+	return 0;
+}
+
+	void cadastrar(){
+				printf("Digite o id: ");
+				scanf("%d", &contact[k].id);
+				printf("Digite o nome: ");
+				scanf(" %49[^\n]", &contact[k].nome);
+				printf("Digite o telefone: ");
+				scanf(" %49[^\n]", &contact[k].telefone);
+				printf("Digite o e-mail: ");
+				scanf(" %49[^\n]", &contact[k].email);
+				printf("\n\n Cadastro realizado com sucesso!\n\n");
+				printf("ID: %d\n Nome: %s \n Telefone: %s \n Email: %s \n ", contact[k].id, contact[k].nome, contact[k].telefone, contact[k].email);
+				k++;
+				main();
+		}
+		
+			
+	
+		
+		
+	void buscar(){
+		int opcadast;
+		printf("Deseja procurar por qual maneira? \n (1) Id \n (2) Nome \n (3) Telefone \n (4) E-mail \n");
+		scanf("%d", &opcadast);
+		switch(opcadast){
+			case 1:
+				buscarId();
+				break;
+			case 2:
+				buscarNome();
+				break;
+			case 3:
+				buscarTel();
+				break;
+			case 4:
+				buscarEmail();
+				break;
+			default: 
+				printf("Inválido!");
+				
+		}	
+	}
+	
+	
+	
+	void buscarId(){
+		contato contact[10];
+		int i;
+		int num;
+		printf("Digite o Id desejado: ");
+		scanf("%d", &num);
+		for(i=0;i<k;i++){
+			if(contact[i].id == num){
+				printf("Encontrado! \n ");
+				printf("ID: %d\n Nome: %s \n Telefone: %s \n Email: %s \n ", contact[i].id, contact[i].nome, contact[i].telefone, contact[i].email);		
+			}
+			else{
+				printf(" ");
+			}
+			
+		}
+		
+	}
+	void buscarNome(){
+		printf("Digite o nome desejado: ");
+	}
+	void buscarTel(){
+		printf("Digite o telefone desejado: ");
+		
+	}
+	void buscarEmail(){
+		printf("Digite o e-mail desejado: ");
+		
+	}
